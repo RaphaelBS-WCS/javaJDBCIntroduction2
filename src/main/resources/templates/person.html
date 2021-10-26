@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Persons</title>
+</head>
+<body>
+<h3 th:text="${person.id} ? 'Edit person' : 'Create person'">Persons</h3>
+<form method="post"th:action="@{/person}" th:object="${person}">
+    <input name="id" th:field="*{id}" type="hidden">
+    <label for="person-firstName">First name:</label>
+    <input th:field="*{firstName}" id="person-firstName" placeholder="Zurabi" required  type="text">
+    <br><br>
+    <label for="person-lastName">Last name:</label>
+    <input th:field="*{lastName}"  id="person-lastName" placeholder="Grialat" required type="text">
+    <br><br>
+    <label for="person-age">Age:</label>
+    <input id="person-age" name="age" placeholder="30" required th:field="*{age}" type="number">
+    <br><br>
+    <input type="submit" value="Send">
+</form>
+<br>
+<a href="/persons">Return to the list</a>
+</body>
+</html>
